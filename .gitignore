@@ -1,0 +1,52 @@
+# Visual Studio specific folder (contains user settings and window states)
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results (Directories)
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Bb]in/
+[Oo]bj/
+
+# C++ Compilation and Linker outputs (Files)
+*.obj
+*.exe
+*.dll
+*.lib
+*.ilk
+*.pdb
+*.exp
+*.idb
+*.iobj
+*.ipch
+*.pch
+*.tlog
+*.recipe
+
+# IntelliSense and Browsing database files
+*.ncb
+*.sdf
+*.opensdf
+*.sqlite3
+*.VC.db
+*.VC.opendb
+
+# CMake specific (if you decide to use CMake instead of MSBuild later)
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake

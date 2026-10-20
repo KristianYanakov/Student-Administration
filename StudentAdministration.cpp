@@ -2,10 +2,17 @@
 //
 
 #include <iostream>
+#include "Date.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+	Date date1; // Default constructor
+
+	std::cout << "Day: " << date1.getDay() << std::endl;
+	std::cout << "Month: " << date1.getMonth() << std::endl;
+	std::cout << "Year: " << date1.getYear() << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

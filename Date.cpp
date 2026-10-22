@@ -1,12 +1,7 @@
 #include <iostream>
 #include "Date.h"
 
-Date::~Date()
-{
-	std::cout << "Destructor called for Date: " << this->day << "/" << this->month << "/" << this->year << std::endl;
-}
-
-//Constructors 
+//Constructors & Destructor
 Date::Date() 
 {
 	this->day = 1;
@@ -15,10 +10,22 @@ Date::Date()
 }
 
 Date::Date(int d, int m, int y)
+{	
+	if (this->isDateValid(d, m, y))
+	{
+		this->setDate(d, m, y);
+		return;
+	}
+
+	std::cerr << "Error: Invalid Date entered!\nFalling back to default date 1/1/2000\n" << std::endl;
+	this->day = 1;
+	this->month = 1;
+	this->year = 2000;
+}
+
+Date::~Date()
 {
-	this->day = d;
-	this->month = m;
-	this->year = y;
+	//std::cout << "Destructor called for Date: " << this->day << "/" << this->month << "/" << this->year << std::endl;
 }
 
 // Getters
@@ -37,37 +44,56 @@ int Date::getYear()
 	return this->year;
 }
 
+void Date::printDate()
+{
+	std::cout << "DATE is: " << this->getDay() << "/" << this->getMonth() << "/" << this->getYear() << "\n" << std::endl;
+}
+
 //Setters
-void Date::setDay(int d)
-{
-	// Validate the day value but also check if month is february of a leap year !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	if (d < 1 || d > 31) {
-		std::cerr << "Invalid day: " << d << ". Day must be between 1 and 31." << std::endl;
-		return;
+//combine in 1 setter to avoid setter order trap of having to validate each time and maybe on first entry day is find but then we change smth and year is leap etc.
 
+void Date::setDate(int d, int m, int y)
+{
+	if (this->isDateValid(d, m, y))
+	{
+		this->day = d;
+		this->month = m;
+		this->year = y;
+
+		this->printDate();
+		return;
 	}
-	this->day = d;
-	std::cout << "Day set to: " << this->day << std::endl;
+	std::cerr << "Error: Invalid Date entered! " << d << " " << m << " " << y << "\n" << std::endl;
 }
 
-void Date::setMonth(int m) 
+bool Date::isLeapYear(int y)
 {
-	if (m < 1 || m > 12)
+	if ((y % 4 == 0 && y % 100 != 0) 
+		|| y % 400 == 0)
 	{
-		std::cerr << "Invalid month: " << m << ". Month must be between 1 and 12." << std::endl;
-		return;
+		return true;
 	}
-	this->month = m;
-	std::cout << "Month set to: " << this->month << std::endl;
+	return false;
 }
 
-void Date::setYear(int y)
+int Date::getDaysInMonth(int m, int y)
 {
-	if(y < this->MIN_YEAR || y > this->CURRENT_YEAR)
+	if (isLeapYear(y) && m == 2)
 	{
-		std::cerr << "Invalid year: " << y << ". Year must be between "<< this->MIN_YEAR << " and " << this->CURRENT_YEAR << "." << std::endl;
-		return;
+		return this->DAYS_IN_EACH_MONTH_NON_LEAP[m - 1] + 1;
 	}
-	this->year = y;
-	std::cout << "Year set to: " << this->year << std::endl;
+	return this->DAYS_IN_EACH_MONTH_NON_LEAP[m - 1];
+}
+
+
+bool Date::isDateValid(int d, int m, int y)
+{
+	if (y < this->MIN_YEAR || y > this->CURRENT_YEAR || 
+		m < 1 || m > 12 || 
+		d < 1 || d > this->getDaysInMonth(m, y))
+	{
+		return false;
+	}
+
+	return true;
 }

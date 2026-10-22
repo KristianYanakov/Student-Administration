@@ -1,19 +1,27 @@
 // StudentAdministration.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include "Date.h"
+
+void testDates()
+{
+	Date date1(5, 1, 2026);
+
+	//Test Cases For Date
+	date1.setDate(29, 2, 2024); //Valid Leap Year
+	date1.setDate(29, 2, 2026); //Invalid Date
+	date1.setDate(29, 2, 1900); //Invalid
+	date1.setDate(29, 2, 2000); //Valid
+	date1.setDate(31, 4, 2026); //Invalid
+}
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-	Date date1; // Default constructor
-
-	std::cout << "Day: " << date1.getDay() << std::endl;
-	std::cout << "Month: " << date1.getMonth() << std::endl;
-	std::cout << "Year: " << date1.getYear() << std::endl;
+	testDates();
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

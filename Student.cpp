@@ -8,18 +8,17 @@
 
 Student::Student()
 {
-	this->name = "Kristian Yanakov";
-	this->faculty_number = "121224148";
+	this->name = "Stamat Gerasimov";
+	this->faculty_number = "111111111";
 	this->average_gpa = 5.84f;
 	this->birth_date = Date(3, 7, 2005);
 }
 
-Student::Student(std::string name, std::string fac_num, float avg_gpa, Date birthday)
+Student::Student(std::string name, std::string fac_num, float avg_gpa, Date birthday) : birth_date(birthday) // Инициализиращ списък (Member Initializer List)
 {
 	this->setName(name);
 	this->setFacultyNumber(fac_num);
 	this->setAvgGPA(avg_gpa);
-	this->setBirthDate(birthday);
 }
 
 //Getters

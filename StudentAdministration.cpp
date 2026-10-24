@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Date.h"
+#include "Student.h"
 
 void testDates()
 {
@@ -15,21 +16,20 @@ void testDates()
 	date1.setDate(31, 4, 2026); //Invalid
 }
 
+void testFacultyNumberValidation()
+{
+	std::cout << Student::isFacultyNumberValid("0000a0000") << std::endl;
+	std::cout << Student::isFacultyNumberValid("00000000") << std::endl;
+	std::cout << Student::isFacultyNumberValid("000000000") << std::endl;
+}
 int main()
 {
-    std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
+	
+	//testDates();
 
-	testDates();
+	//testFacultyNumberValidation();
+	
+	Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
+	stud1.printStudent();
 }
-
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

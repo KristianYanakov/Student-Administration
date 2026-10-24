@@ -25,7 +25,8 @@ Date::Date(int d, int m, int y)
 
 Date::~Date()
 {
-	//std::cout << "Destructor called for Date: " << this->day << "/" << this->month << "/" << this->year << std::endl;
+	//std::cout << "Destructor called for Date: " << std::endl;
+	//this->printDate();
 }
 
 // Getters
@@ -46,7 +47,7 @@ int Date::getYear()
 
 void Date::printDate()
 {
-	std::cout << "DATE is: " << this->getDay() << "/" << this->getMonth() << "/" << this->getYear() << "\n" << std::endl;
+	std::cout << "DATE : " << this->getDay() << "/" << this->getMonth() << "/" << this->getYear() << "\n" << std::endl;
 }
 
 //Setters
@@ -88,7 +89,7 @@ int Date::getDaysInMonth(int m, int y)
 
 bool Date::isDateValid(int d, int m, int y)
 {
-	if (y < this->MIN_YEAR || y > this->CURRENT_YEAR || 
+	if (y < MIN_YEAR || y > CURRENT_YEAR || 
 		m < 1 || m > 12 || 
 		d < 1 || d > this->getDaysInMonth(m, y))
 	{

@@ -15,10 +15,10 @@ public:
 	Date();
 	Date(int d, int m, int y);
 
-	int getDay();
-	int getMonth();
-	int getYear();
-	void printDate();
+	int getDay() const;
+	int getMonth() const;
+	int getYear() const;
+	void printDate() const;
 
 	void setDate(int d, int m, int y);
 

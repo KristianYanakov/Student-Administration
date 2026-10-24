@@ -29,12 +29,12 @@ Classroom::Classroom(std::string class_name, std::vector<Student> students)
 
 // Getters
 
-std::string Classroom::getClassName()
+const std::string Classroom::getClassName() const
 {
 	return this->class_name;
 }
 
-std::vector<Student> Classroom::getStudents()
+const std::vector<Student>& Classroom::getStudents() const
 {
 	return this->students;
 }
@@ -74,7 +74,7 @@ int Classroom::searchByFacultyNumber(std::string fac_num)
 {
 	int index = 0;
 
-	for (Student st : this->students)
+	for (const Student& st : this->students)
 	{
 		if (!st.getFacultyNumber().compare(fac_num))
 		{
@@ -95,7 +95,7 @@ void Classroom::sortStudents()
 
 	std::cout << "Sorted Classroom: " << this->class_name << std::endl;
 
-	for (Student s : this->students)
+	for (const Student& s : this->students)
 	{
 		s.printStudent();
 	}
@@ -105,7 +105,7 @@ void Classroom::filterStudentsByGPA(float gpa_min)
 {
 	std::vector<Student> filtered;
 
-	for (Student s : this->students)
+	for (const Student& s : this->students)
 	{
 		if (s.getAverageGPA() > gpa_min)
 		{
@@ -124,7 +124,7 @@ void Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
 {
 	std::vector<Student> filtered;
 
-	for (Student s : this->students)
+	for (const Student& s : this->students)
 	{
 		if (s.getAverageGPA() > gpa_min && s.getAverageGPA() < gpa_max)
 		{
@@ -144,7 +144,7 @@ void Classroom::printStudentAgeDistribution()
 	std::map<int, int> age_distribution;
 	int curr_student_age = 0;
 
-	for (Student s : this->students)
+	for (const Student& s : this->students)
 	{
 		curr_student_age = s.getAge();
 		age_distribution[curr_student_age] += 1;
@@ -165,7 +165,7 @@ float Classroom::averageClassGPA()
 		return -1;
 	}
 
-	for (Student s : this->students) 
+	for (const Student& s : this->students) 
 	{
 		avg_grade += s.getAverageGPA();
 	}
@@ -187,7 +187,7 @@ void Classroom::printClassStudents()
 {
 	std::cout << "------------------------------------------" << std::endl;
 	std::cout << "Students of Class - " << this->class_name << "\n"  << std::endl;
-	for (Student s : this->students)
+	for (const Student& s : this->students)
 	{
 		s.printStudent();
 	}

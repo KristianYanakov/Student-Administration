@@ -15,8 +15,8 @@ public:
 	Classroom(std::string class_name);
 	Classroom(std::string class_name, std::vector<Student> students);
 
-	std::string getClassName();
-	std::vector<Student> getStudents();
+	const std::string getClassName() const;
+	const std::vector<Student>& getStudents() const;
 
 	void setClassName(std::string class_name);
 	void addStudent(const Student& student);

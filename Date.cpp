@@ -26,22 +26,22 @@ Date::Date(int d, int m, int y)
 
 // Getters
 
-int Date::getDay()
+int Date::getDay() const
 {
 	return this->day;
 }
 
-int Date::getMonth()
+int Date::getMonth() const
 {
 	return this->month;
 }
 
-int Date::getYear()
+int Date::getYear() const
 {
 	return this->year;
 }
 
-void Date::printDate()
+void Date::printDate() const
 {
 	std::cout << "DATE : " << this->getDay() << "/" << this->getMonth() << "/" << this->getYear() << "\n" << std::endl;
 }

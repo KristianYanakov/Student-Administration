@@ -33,12 +33,12 @@ const std::string& Student::getFacultyNumber() const
 	return this->faculty_number;
 }
 
-float Student::getAverageGPA()
+float Student::getAverageGPA() const
 {
 	return this->average_gpa;
 }
 
-Date Student::getBirthDate()
+Date Student::getBirthDate() const
 {
 	return this->birth_date;
 }
@@ -77,7 +77,7 @@ void Student::setBirthDate(Date birthday)
 
 // Helpers
 
-int Student::getAge()
+int Student::getAge() const
 {	
 	int curr_year = Date::getCurrentYear();
 	int curr_month = Date::getCurrentMonth();
@@ -109,7 +109,7 @@ bool Student::operator<(const Student& other_student) const
 	return this->average_gpa < other_student.average_gpa;
 }
 
-void Student::printStudent()
+void Student::printStudent() const
 {
 	std::cout << "Student: " << this->name << " " << this->faculty_number << " " << this->average_gpa << " " << this->birth_date.getDay() << "/" << this->birth_date.getMonth() << "/" << this->birth_date.getYear() << "\n" << std::endl;
 

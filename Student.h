@@ -18,20 +18,20 @@ public:
 	
 	const std::string& getName() const;
 	const std::string& getFacultyNumber() const;
-	float getAverageGPA();
-	Date getBirthDate();
+	float getAverageGPA() const;
+	Date getBirthDate() const;
 
 	void setName(std::string name);
 	void setFacultyNumber(std::string fac_num);
 	void setAvgGPA(float avg_gpa);
 	void setBirthDate(Date birthday);
-
-	int getAge();
+	
+	int getAge() const;
 	static bool isFacultyNumberValid(std::string fac_num);
 
 	bool operator<(const Student& other_student) const;
 
-	void printStudent();
+	void printStudent() const;
 
 	~Student();
 };

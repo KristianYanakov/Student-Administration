@@ -3,7 +3,6 @@
 
 #include "Date.h"
 
-//Constructors & Destructor
 Date::Date() 
 {
 	this->day = 1;
@@ -25,13 +24,8 @@ Date::Date(int d, int m, int y)
 	this->year = 2000;
 }
 
-Date::~Date()
-{
-	//std::cout << "Destructor called for Date: " << std::endl;
-	//this->printDate();
-}
-
 // Getters
+
 int Date::getDay()
 {
 	return this->day;
@@ -52,7 +46,7 @@ void Date::printDate()
 	std::cout << "DATE : " << this->getDay() << "/" << this->getMonth() << "/" << this->getYear() << "\n" << std::endl;
 }
 
-//Setters
+// Setter
 //combine in 1 setter to avoid setter order trap of having to validate each time and maybe on first entry day is find but then we change smth and year is leap etc.
 
 void Date::setDate(int d, int m, int y)
@@ -68,6 +62,8 @@ void Date::setDate(int d, int m, int y)
 	}
 	std::cerr << "Error: Invalid Date entered! " << d << " " << m << " " << y << "\n" << std::endl;
 }
+
+// Helpers
 
 bool Date::isLeapYear(int y)
 {
@@ -143,4 +139,10 @@ int Date::getCurrentDay()
 
 	return day;
 
+}
+
+Date::~Date()
+{
+	//std::cout << "Destructor called for Date: " << std::endl;
+	//this->printDate();
 }

@@ -31,6 +31,28 @@ void testCurrentDate()
 	std::cout << "Current Month: " << Date::getCurrentMonth() << std::endl;
 	std::cout << "Current Day: " << Date::getCurrentDay() << std::endl;
 }
+
+void testGetAge()
+{
+	// test - current date 24.10.2026
+	Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2005));
+	std::cout << stud1.getAge() << std::endl; // - 21
+
+	stud1.setBirthDate(Date(1, 9, 2005)); // One month before - 21
+	std::cout << stud1.getAge() << std::endl;
+
+	stud1.setBirthDate(Date(1, 11, 2005)); // One month ahead - 20
+	std::cout << stud1.getAge() << std::endl;
+
+	stud1.setBirthDate(Date(24, 10, 2005)); // Birthday - 21
+	std::cout << stud1.getAge() << std::endl;
+
+	stud1.setBirthDate(Date(23, 10, 2005)); // date has passed - 21
+	std::cout << stud1.getAge() << std::endl;
+
+	stud1.setBirthDate(Date(25, 10, 2005)); // date has passed - 20
+	std::cout << stud1.getAge() << std::endl;
+}
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -39,9 +61,10 @@ int main()
 
 	//testFacultyNumberValidation();
 	
-	//Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
-	//stud1.printStudent();
-
 	//testCurrentDate();
 
+	//testGetAge();
+
+	//Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
+	//stud1.printStudent();
 }

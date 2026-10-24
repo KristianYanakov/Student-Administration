@@ -77,10 +77,25 @@ void Student::setBirthDate(Date birthday)
 }
 
 // Helpers
-// needs reformating to check against month and day and also get the current date
+
 int Student::getAge()
-{
-	return Date::getCurrentYear() - this->birth_date.getYear();
+{	
+	int curr_year = Date::getCurrentYear();
+	int curr_month = Date::getCurrentMonth();
+	int curr_day = Date::getCurrentDay();
+
+	int birth_year = this->birth_date.getYear();
+	int birth_month = this->birth_date.getMonth();
+	int birth_Day = this->birth_date.getDay();
+
+	int age = curr_year - birth_year;
+	
+	if (birth_month > curr_month || (birth_month == curr_month && birth_Day > curr_day))
+	{
+		age--;
+	}
+
+	return age;
 }
 
 bool Student::isFacultyNumberValid(std::string fac_num)

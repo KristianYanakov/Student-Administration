@@ -29,6 +29,8 @@ public:
 	int getAge();
 	static bool isFacultyNumberValid(std::string fac_num);
 
+	bool operator<(const Student& other_student) const;
+
 	void printStudent();
 
 	~Student();

@@ -104,6 +104,17 @@ bool Student::isFacultyNumberValid(std::string fac_num)
 	return regex_match(fac_num, regex_expression);
 }
 
+// Връща true, ако текущият обект (this) е "по-малък" от другия (other)
+
+bool Student::operator<(const Student& other_student) const
+{
+	// Сравняваме по среден успех. 
+	// Ако искаш да сортираш по факултетен номер, използвай:
+	// return this->faculty_number < other.faculty_number;
+
+	return this->average_gpa < other_student.average_gpa;
+}
+
 void Student::printStudent()
 {
 	std::cout << "Student: " << this->name << " " << this->faculty_number << " " << this->average_gpa << " " << this->birth_date.getDay() << "/" << this->birth_date.getMonth() << "/" << this->birth_date.getYear() << "\n" << std::endl;

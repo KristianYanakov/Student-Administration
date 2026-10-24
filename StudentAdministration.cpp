@@ -53,6 +53,19 @@ void testGetAge()
 	stud1.setBirthDate(Date(25, 10, 2005)); // date has passed - 20
 	std::cout << stud1.getAge() << std::endl;
 }
+
+void testPredefinedStudentComparisonOperator()
+{
+	Student s1("Ivan", "123456789", 4.90f, Date(1, 1, 2000));
+	Student s2("Maria", "987654321", 5.80f, Date(2, 2, 2001));
+
+	(s1 < s2) ? std::cout << s1.getName() << " has lower grades than " << s2.getName() << std::endl : std::cout << s1.getName() << " has higher grades than " << s2.getName() << std::endl;
+
+	Student s3("Pencho", "123456789", 5.90f, Date(1, 1, 2000));
+	Student s4("Alvarez", "987654321", 5.80f, Date(2, 2, 2001));
+
+	(s3 < s4) ? std::cout << s3.getName() << " has lower grades than " << s4.getName() << std::endl : std::cout << s3.getName() << " has higher grades than " << s4.getName() << std::endl;
+}
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -65,6 +78,11 @@ int main()
 
 	//testGetAge();
 
-	//Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
-	//stud1.printStudent();
+	//testPredefinedStudentComparisonOperator();
+
+	//-----------------------------------
+
+
+
+	
 }

@@ -156,6 +156,26 @@ void Classroom::printStudentAgeDistribution()
 	}
 }
 
+float Classroom::averageClassGPA()
+{
+	float avg_grade = 0;
+
+	if (this->students.size() == 0) {
+		std::cerr << "No members in this class!" << std::endl;
+		return -1;
+	}
+
+	for (Student s : this->students) 
+	{
+		avg_grade += s.getAverageGPA();
+	}
+
+	avg_grade /= this->students.size();
+
+	std::cout << "Class: " << this->class_name << "Average GPA is : " << avg_grade << std::endl;
+	return avg_grade;
+}
+
 bool Classroom::isClassNameValid(std::string class_name)
 {
 	std::regex regex_expression("^Class_[A-Z]_20[0-9]{2}$"); // Class_B_2019

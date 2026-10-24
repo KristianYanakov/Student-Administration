@@ -27,6 +27,7 @@ public:
 	void filterStudentsByGPA(float gpa_min);
 	void filterStudentsByGPA(float gpa_min, float gpa_max);
 	void printStudentAgeDistribution();
+	float averageClassGPA();
 
 	static bool isClassNameValid(std::string class_name);
 	static void printStudentInfo(const Student& student);

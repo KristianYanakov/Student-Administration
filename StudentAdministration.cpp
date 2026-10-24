@@ -121,6 +121,10 @@ void testClassroomOperations()
 	 //myClass.removeStudent("123456789"); // No such fac num
 	 //myClass.searchByFacultyNumber("123456789");
 	 //myClass.printClassStudents();
+
+	// --- TEST 6: AVG GPA ---
+	//std::cout << "\n--- Testing AVG GPA ---\n";
+	//myClass.averageClassGPA();
 }
 
 int main()

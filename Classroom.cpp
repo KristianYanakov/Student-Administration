@@ -58,6 +58,13 @@ void Classroom::addStudent(const Student& student)
 void Classroom::removeStudent(std::string fac_num)
 {
 	int remove_index = this->searchByFacultyNumber(fac_num);
+	
+	if (remove_index == -1)
+	{
+		std::cerr << "No student with such faculty number was found and consequently not deleted: " << fac_num << std::endl;
+		return;
+	}
+
 	this->students.erase(this->students.begin() + remove_index);
 }
 
@@ -79,7 +86,7 @@ int Classroom::searchByFacultyNumber(std::string fac_num)
 	}
 	
 	std::cerr << "Classroom has no student with faculty number: " << fac_num << std::endl;
-	return NULL;
+	return -1;
 }
 
 void Classroom::sortStudents()

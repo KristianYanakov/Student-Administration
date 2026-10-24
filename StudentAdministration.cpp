@@ -88,7 +88,7 @@ void testClassroomOperations()
 	myClass.addStudent(s4);
 	myClass.addStudent(s5);
 
-	myClass.printClassStudents();
+	//myClass.printClassStudents();
 
 	//myClass.addStudent(s6);
 
@@ -114,8 +114,12 @@ void testClassroomOperations()
 
 	// --- TEST 5: Remove ---
 	 //std::cout << "\n--- Testing Remove ---\n";
-	 //myClass.removeStudent("222222222"); // Should remove Bob
+	 //myClass.removeStudent("22222222"); // Should remove Bob
 	 //myClass.searchByFacultyNumber("222222222");
+	 //myClass.printClassStudents();
+
+	 //myClass.removeStudent("123456789"); // No such fac num
+	 //myClass.searchByFacultyNumber("123456789");
 	 //myClass.printClassStudents();
 }
 
@@ -135,7 +139,7 @@ int main()
 
 	//-----------------------------------
 
-	//testClassroomOperations();
+	testClassroomOperations();
 
 	
 }

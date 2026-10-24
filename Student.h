@@ -16,8 +16,8 @@ public:
 	Student();
 	Student(std::string name, std::string fac_num, float avg_gpa, Date birthday);
 	
-	std::string getName();
-	std::string getFacultyNumber();
+	const std::string& getName() const;
+	const std::string& getFacultyNumber() const;
 	float getAverageGPA();
 	Date getBirthDate();
 

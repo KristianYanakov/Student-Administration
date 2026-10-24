@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <algorithm>
+#include <optional>
+#include <ranges>
+#include <map>
 
 #include "Classroom.h"
 #include "Student.h"
@@ -53,11 +57,13 @@ void Classroom::addStudent(const Student& student)
 
 void Classroom::removeStudent(std::string fac_num)
 {
-	int remove_index = this->getStudentIndexByFacultyNumber(fac_num);
+	int remove_index = this->searchByFacultyNumber(fac_num);
 	this->students.erase(this->students.begin() + remove_index);
 }
 
-int Classroom::getStudentIndexByFacultyNumber(std::string fac_num)
+// Search & Sort & Filter & Print Age Distribution & Validation
+
+int Classroom::searchByFacultyNumber(std::string fac_num)
 {
 	int index = 0;
 
@@ -65,6 +71,8 @@ int Classroom::getStudentIndexByFacultyNumber(std::string fac_num)
 	{
 		if (st.getFacultyNumber().compare(fac_num))
 		{
+			Student stud = this->students[index];
+			stud.printStudent();
 			return index;
 		}
 		index++;
@@ -73,31 +81,83 @@ int Classroom::getStudentIndexByFacultyNumber(std::string fac_num)
 	std::cerr << "Classroom has no student with faculty number: " << fac_num << std::endl;
 }
 
-// Search & Sort & Filter & Print Age Distribution & Validation
-
-void Classroom::searchByFacultyNumber(std::string fac_num)
-{
-
-}
-
 void Classroom::sortStudents()
 {
+	sort(this->students.begin(), this->students.end());
 
+	std::cout << "Sorted Classroom: " << this->class_name << std::endl;
+
+	for (Student s : this->students)
+	{
+		s.printStudent();
+	}
 }
 
-void Classroom::filterStudentsByGPA()
+void Classroom::filterStudentsByGPA(float gpa_min)
 {
+	std::vector<Student> filtered;
 
+	for (Student s : this->students)
+	{
+		if (s.getAverageGPA() > gpa_min)
+		{
+			filtered.push_back(s);
+			s.printStudent();
+		}
+	}
+
+	if (filtered.size() == 0)
+	{
+		std::cerr << "No students match the filter!" << std::endl;
+	}
+}
+
+void Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
+{
+	std::vector<Student> filtered;
+
+	for (Student s : this->students)
+	{
+		if (s.getAverageGPA() > gpa_min && s.getAverageGPA() < gpa_max)
+		{
+			filtered.push_back(s);
+			s.printStudent();
+		}
+	}
+
+	if (filtered.size() == 0)
+	{
+		std::cerr << "No students match the filter!" << std::endl;
+	}
 }
 
 void Classroom::printStudentAgeDistribution()
 {
+	std::map<int, int> age_distribution;
+	int curr_student_age = 0;
 
+	for (Student s : this->students)
+	{
+		curr_student_age = s.getAge();
+		
+		if (age_distribution[curr_student_age])
+		{
+			age_distribution[curr_student_age] += 1;
+			continue;
+		}
+		age_distribution[curr_student_age] = 0;
+	}
+
+	for (auto item : age_distribution) {
+		std::cout << "Age: " << item.first << " Number of Students that age: " << item.second << "\n";
+	}
 }
 
 bool Classroom::isClassNameValid(std::string class_name)
 {
+	std::regex regex_expression("^Class_[A-Z]_20[0-9]{2}$"); // Class_B_2019
 
+	return regex_match(class_name, regex_expression);
 }
 
 Classroom::~Classroom() {

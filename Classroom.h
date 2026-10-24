@@ -21,14 +21,14 @@ public:
 	void setClassName(std::string class_name);
 	void addStudent(const Student& student);
 	void removeStudent(std::string fac_num);
-	int getStudentIndexByFacultyNumber(std::string fac_num);
 
-	void searchByFacultyNumber(std::string fac_num);
+	int searchByFacultyNumber(std::string fac_num);
 	void sortStudents();
-	void filterStudentsByGPA();
+	void filterStudentsByGPA(float gpa_min);
+	void filterStudentsByGPA(float gpa_min, float gpa_max);
 	void printStudentAgeDistribution();
 
 	static bool isClassNameValid(std::string class_name);
-
+	static void printStudentInfo(const Student& student);
 	~Classroom();
 };

@@ -23,12 +23,12 @@ Student::Student(std::string name, std::string fac_num, float avg_gpa, Date birt
 
 //Getters
 
-std::string Student::getName()
+const std::string& Student::getName() const
 {
 	return this->name;
 }
 
-std::string Student::getFacultyNumber()
+const std::string& Student::getFacultyNumber() const
 {
 	return this->faculty_number;
 }

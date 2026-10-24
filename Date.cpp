@@ -57,7 +57,7 @@ void Date::setDate(int d, int m, int y)
 		this->month = m;
 		this->year = y;
 
-		this->printDate();
+		//this->printDate();
 		return;
 	}
 	std::cerr << "Error: Invalid Date entered! " << d << " " << m << " " << y << "\n" << std::endl;

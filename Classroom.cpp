@@ -69,7 +69,7 @@ int Classroom::searchByFacultyNumber(std::string fac_num)
 
 	for (Student st : this->students)
 	{
-		if (st.getFacultyNumber().compare(fac_num))
+		if (!st.getFacultyNumber().compare(fac_num))
 		{
 			Student stud = this->students[index];
 			stud.printStudent();
@@ -77,8 +77,9 @@ int Classroom::searchByFacultyNumber(std::string fac_num)
 		}
 		index++;
 	}
-
+	
 	std::cerr << "Classroom has no student with faculty number: " << fac_num << std::endl;
+	return NULL;
 }
 
 void Classroom::sortStudents()
@@ -139,13 +140,8 @@ void Classroom::printStudentAgeDistribution()
 	for (Student s : this->students)
 	{
 		curr_student_age = s.getAge();
-		
-		if (age_distribution[curr_student_age])
-		{
-			age_distribution[curr_student_age] += 1;
-			continue;
-		}
-		age_distribution[curr_student_age] = 0;
+		age_distribution[curr_student_age] += 1;
+			
 	}
 
 	for (auto item : age_distribution) {
@@ -158,6 +154,17 @@ bool Classroom::isClassNameValid(std::string class_name)
 	std::regex regex_expression("^Class_[A-Z]_20[0-9]{2}$"); // Class_B_2019
 
 	return regex_match(class_name, regex_expression);
+}
+
+void Classroom::printClassStudents()
+{
+	std::cout << "------------------------------------------" << std::endl;
+	std::cout << "Students of Class - " << this->class_name << "\n"  << std::endl;
+	for (Student s : this->students)
+	{
+		s.printStudent();
+	}
+	std::cout << "------------------------------------------" << std::endl;
 }
 
 Classroom::~Classroom() {

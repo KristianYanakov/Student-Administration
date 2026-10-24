@@ -30,5 +30,7 @@ public:
 
 	static bool isClassNameValid(std::string class_name);
 	static void printStudentInfo(const Student& student);
+
+	void printClassStudents();
 	~Classroom();
 };

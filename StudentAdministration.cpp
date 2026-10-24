@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Date.h"
 #include "Student.h"
+#include "Classroom.h"
 
 void testDates()
 {
@@ -66,6 +67,58 @@ void testPredefinedStudentComparisonOperator()
 
 	(s3 < s4) ? std::cout << s3.getName() << " has lower grades than " << s4.getName() << std::endl : std::cout << s3.getName() << " has higher grades than " << s4.getName() << std::endl;
 }
+
+void testClassroomOperations()
+{
+	// Initialize valid classroom (Matches "^Class_[A-Z]_20[0-9]{2}$")
+	Classroom myClass("Class_A_2024");
+
+	// Mock Data: 5 Students with spread GPAs and birth dates
+	Student s1("Alice Johnson", "111111111", 5.80, Date(15, 5, 2005)); // ~Age 21
+	Student s2("Bob Smith", "222222222", 4.50, Date(20, 8, 2004)); // ~Age 22
+	Student s3("Charlie Brown", "333333333", 3.20, Date(10, 1, 2005)); // ~Age 21
+	Student s4("Diana Prince", "444444444", 6.00, Date(30, 12, 2006)); // ~Age 19
+	Student s5("Evan Wright", "555555555", 4.50, Date(5, 5, 2005)); // ~Age 21
+
+	//Student s6("Test", "000000000", 4.50, Date(5, 5, 2002)); // ~Age 24
+
+	myClass.addStudent(s1);
+	myClass.addStudent(s2);
+	myClass.addStudent(s3);
+	myClass.addStudent(s4);
+	myClass.addStudent(s5);
+
+	myClass.printClassStudents();
+
+	//myClass.addStudent(s6);
+
+	// --- TEST 1: Search ---
+	 //std::cout << "--- Testing Search ---\n";
+	 //myClass.searchByFacultyNumber("333333333"); // Should print Charlie Brown 
+
+	// --- TEST 2: Sort ---
+	 //std::cout << "\n--- Testing Sort ---\n";
+	 //myClass.sortStudents(); // Should print Charlie(3.20) -> Bob(4.50) -> Evan(4.50) -> Alice(5.80) -> Diana(6.00)
+
+	// --- TEST 3: Filter ---
+	 //std::cout << "\n--- Testing Filter (> 5.0) ---\n";
+	 //myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
+
+	// std::cout << "\n--- Testing Filter Range (4.0 - 5.0) ---\n";
+	 //myClass.filterStudentsByGPA(4.0, 5.0); // Should print Bob and Evan
+
+	// --- TEST 4: Age Distribution ---
+	// std::cout << "\n--- Testing Age Distribution ---\n";
+	 //myClass.printStudentAgeDistribution(); 
+	// Expected output depending on current date: Three 21-year-olds, one 22-year-old, one 19/20-year-old.
+
+	// --- TEST 5: Remove ---
+	 //std::cout << "\n--- Testing Remove ---\n";
+	 //myClass.removeStudent("222222222"); // Should remove Bob
+	 //myClass.searchByFacultyNumber("222222222");
+	 //myClass.printClassStudents();
+}
+
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -82,7 +135,7 @@ int main()
 
 	//-----------------------------------
 
-
+	//testClassroomOperations();
 
 	
 }

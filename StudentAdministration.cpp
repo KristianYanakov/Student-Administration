@@ -14,6 +14,8 @@ void testDates()
 	date1.setDate(29, 2, 1900); //Invalid
 	date1.setDate(29, 2, 2000); //Valid
 	date1.setDate(31, 4, 2026); //Invalid
+	date1.setDate(31, 4, 2028); //Invalid
+	date1.setDate(31, 4, 1800); //Invalid
 }
 
 void testFacultyNumberValidation()
@@ -22,14 +24,24 @@ void testFacultyNumberValidation()
 	std::cout << Student::isFacultyNumberValid("00000000") << std::endl;
 	std::cout << Student::isFacultyNumberValid("000000000") << std::endl;
 }
+
+void testCurrentDate()
+{
+	std::cout << "Current Year: " << Date::getCurrentYear() << std::endl;
+	std::cout << "Current Month: " << Date::getCurrentMonth() << std::endl;
+	std::cout << "Current Day: " << Date::getCurrentDay() << std::endl;
+}
 int main()
 {
     //std::cout << "Hello World!\n";
 	
-	//testDates();
+	//testDates(); 
 
 	//testFacultyNumberValidation();
 	
-	Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
-	stud1.printStudent();
+	//Student stud1("John Doe", "121224155", 4.0, Date(1, 1, 2000));
+	//stud1.printStudent();
+
+	//testCurrentDate();
+
 }

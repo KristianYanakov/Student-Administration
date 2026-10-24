@@ -2,7 +2,6 @@
 
 // ​Date (Дата): съхранява ден (day), месец (month) и година (year). 
 // Валидира календарните дати с оглед на високосните години (делимост на 4, но не на 100, освен ако не се дели на 400), 
-static const int CURRENT_YEAR = 2026;
 static const int MIN_YEAR = 1900;
 
 class Date {
@@ -26,6 +25,10 @@ public:
 	bool isLeapYear(int y);
 	int getDaysInMonth(int m, int y);
 	bool isDateValid(int d, int m, int y);
+
+	static int getCurrentYear();
+	static int getCurrentMonth();
+	static int getCurrentDay();
 
 	~Date();
 };

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+
 #include "Date.h"
 
 //Constructors & Destructor
@@ -89,7 +91,7 @@ int Date::getDaysInMonth(int m, int y)
 
 bool Date::isDateValid(int d, int m, int y)
 {
-	if (y < MIN_YEAR || y > CURRENT_YEAR || 
+	if (y < MIN_YEAR || y > Date::getCurrentYear() ||
 		m < 1 || m > 12 || 
 		d < 1 || d > this->getDaysInMonth(m, y))
 	{
@@ -97,4 +99,48 @@ bool Date::isDateValid(int d, int m, int y)
 	}
 
 	return true;
+}
+
+int Date::getCurrentYear()
+{
+	// Get current time
+	auto const now = std::chrono::system_clock::now();
+
+	// Convert to year_month_day
+	auto const ymd = std::chrono::year_month_day{ std::chrono::floor<std::chrono::days>(now) };
+
+	// Extract as integers
+	int year = static_cast<int>(ymd.year());
+	return year;
+
+
+}
+
+int Date::getCurrentMonth()
+{
+	// Get current time
+	auto const now = std::chrono::system_clock::now();
+
+	// Convert to year_month_day
+	auto const ymd = std::chrono::year_month_day{ std::chrono::floor<std::chrono::days>(now) };
+
+	// Extract as integers
+	unsigned int month = static_cast<unsigned int>(ymd.month());
+
+	return month;
+}
+
+int Date::getCurrentDay()
+{
+	// Get current time
+	auto const now = std::chrono::system_clock::now();
+
+	// Convert to year_month_day
+	auto const ymd = std::chrono::year_month_day{ std::chrono::floor<std::chrono::days>(now) };
+
+	// Extract as integers
+	unsigned int day = static_cast<unsigned int>(ymd.day());
+
+	return day;
+
 }

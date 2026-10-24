@@ -80,7 +80,7 @@ void Student::setBirthDate(Date birthday)
 // needs reformating to check against month and day and also get the current date
 int Student::getAge()
 {
-	return CURRENT_YEAR - this->birth_date.getYear();
+	return Date::getCurrentYear() - this->birth_date.getYear();
 }
 
 bool Student::isFacultyNumberValid(std::string fac_num)

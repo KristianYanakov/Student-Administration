@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <ostream>
+#include <vector>
 
 #include "Date.h"
 

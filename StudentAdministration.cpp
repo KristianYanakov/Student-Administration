@@ -136,13 +136,16 @@ void testClassroomOperations()
 	//std::cout << s3 << std::endl;
 	//std::cout << s4 << std::endl;
 	//std::cout << s5 << std::endl;
+
+	// --- TEST 8: Predefine << for classroom
+	std::cout << myClass;
 }
 
 int main()
 {
     //std::cout << "Hello World!\n";
 	
-	testDates(); 
+	//testDates(); 
 
 	//testFacultyNumberValidation();
 	
@@ -154,6 +157,6 @@ int main()
 
 	//-----------------------------------
 
-	//testClassroomOperations();
+	testClassroomOperations();
 
 }

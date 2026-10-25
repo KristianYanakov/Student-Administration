@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <ostream>
 
 #include "Student.h"
 
@@ -34,5 +35,8 @@ public:
 	static void printStudentInfo(const Student& student);
 
 	void printClassStudents();
+
+	friend std::ostream& operator<<(std::ostream& out, const Classroom& classroom);
+
 	~Classroom();
 };

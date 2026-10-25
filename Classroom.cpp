@@ -8,8 +8,6 @@
 #include <map>
 
 #include "Classroom.h"
-#include "Student.h"
-#include "Date.h"
 
 Classroom::Classroom()
 {
@@ -211,6 +209,18 @@ void Classroom::printClassStudents()
 		s.printStudent();
 	}
 	std::cout << "------------------------------------------" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
+{
+	out << classroom.getClassName() << "\n";
+
+	for (const auto& s : classroom.getStudents())
+	{
+		out << s << "\n";
+	}
+
+	return out;
 }
 
 Classroom::~Classroom() {

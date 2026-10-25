@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <regex>
 
 #include "Date.h"
@@ -142,9 +141,7 @@ std::ostream& operator<<(std::ostream& out, const Student& student)
 	out << "Student: " << student.getName() << " "
 		<< student.getFacultyNumber() << " "
 		<< student.getAverageGPA() << " "
-		<< student.getBirthDate().getDay() << "/"
-		<< student.getBirthDate().getMonth() << "/"
-		<< student.getBirthDate().getYear();
+		<< student.getBirthDate();
 
 	return out;
 }

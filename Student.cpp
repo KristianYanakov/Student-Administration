@@ -77,6 +77,7 @@ void Student::setBirthDate(Date birthday)
 
 // Helpers
 
+//With current date by default
 int Student::getAge() const
 {	
 	int curr_year = Date::getCurrentYear();
@@ -89,6 +90,27 @@ int Student::getAge() const
 
 	int age = curr_year - birth_year;
 	
+	if (birth_month > curr_month || (birth_month == curr_month && birth_Day > curr_day))
+	{
+		age--;
+	}
+
+	return age;
+}
+
+//With custom date
+int Student::getAge(Date date) const
+{
+	int curr_year = date.getYear();
+	int curr_month = date.getMonth();
+	int curr_day = date.getDay();
+
+	int birth_year = this->birth_date.getYear();
+	int birth_month = this->birth_date.getMonth();
+	int birth_Day = this->birth_date.getDay();
+
+	int age = curr_year - birth_year;
+
 	if (birth_month > curr_month || (birth_month == curr_month && birth_Day > curr_day))
 	{
 		age--;

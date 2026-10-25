@@ -110,6 +110,8 @@ void testClassroomOperations()
 	// --- TEST 4: Age Distribution ---
 	// std::cout << "\n--- Testing Age Distribution ---\n";
 	 //myClass.printStudentAgeDistribution(); 
+	 //myClass.printStudentAgeDistribution(Date(5, 9, 2020)); 
+
 	// Expected output depending on current date: Three 21-year-olds, one 22-year-old, one 19/20-year-old.
 
 	// --- TEST 5: Remove ---

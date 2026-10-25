@@ -27,6 +27,7 @@ public:
 	void setBirthDate(Date birthday);
 	
 	int getAge() const;
+	int getAge(Date date) const;
 	static bool isFacultyNumberValid(std::string fac_num);
 
 	bool operator<(const Student& other_student) const;

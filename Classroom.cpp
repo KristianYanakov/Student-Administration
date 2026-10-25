@@ -139,6 +139,7 @@ void Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
 	}
 }
 
+//Default with the current date
 void Classroom::printStudentAgeDistribution()
 {
 	std::map<int, int> age_distribution;
@@ -149,6 +150,24 @@ void Classroom::printStudentAgeDistribution()
 		curr_student_age = s.getAge();
 		age_distribution[curr_student_age] += 1;
 			
+	}
+
+	for (auto item : age_distribution) {
+		std::cout << "Age: " << item.first << " Number of Students that age: " << item.second << "\n";
+	}
+}
+
+//With custom date
+void Classroom::printStudentAgeDistribution(Date date)
+{
+	std::map<int, int> age_distribution;
+	int curr_student_age = 0;
+
+	for (const Student& s : this->students)
+	{
+		curr_student_age = s.getAge(date);
+		age_distribution[curr_student_age] += 1;
+
 	}
 
 	for (auto item : age_distribution) {

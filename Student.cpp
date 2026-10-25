@@ -146,6 +146,17 @@ std::ostream& operator<<(std::ostream& out, const Student& student)
 	return out;
 }
 
+std::ostream& operator<<(std::ostream& out, const std::vector<Student>& students)
+{
+	for (const Student& s : students)
+	{
+		out << s << "\n";
+	}
+
+	return out;
+}
+
+
 Student::~Student()
 {
 	//std::cout << "Destructor called for Student: " << std::endl;

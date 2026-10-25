@@ -10,13 +10,15 @@ void testDates()
 	Date date1(5, 1, 2026);
 
 	//Test Cases For Date
-	date1.setDate(29, 2, 2024); //Valid Leap Year
-	date1.setDate(29, 2, 2026); //Invalid Date
-	date1.setDate(29, 2, 1900); //Invalid
-	date1.setDate(29, 2, 2000); //Valid
-	date1.setDate(31, 4, 2026); //Invalid
-	date1.setDate(31, 4, 2028); //Invalid
-	date1.setDate(31, 4, 1800); //Invalid
+	//date1.setDate(29, 2, 2024); //Valid Leap Year
+	//date1.setDate(29, 2, 2026); //Invalid Date
+	//date1.setDate(29, 2, 1900); //Invalid
+	//date1.setDate(29, 2, 2000); //Valid
+	//date1.setDate(31, 4, 2026); //Invalid
+	//date1.setDate(31, 4, 2028); //Invalid
+	//date1.setDate(31, 4, 1800); //Invalid
+
+	std::cout << date1 << std::endl;
 }
 
 void testFacultyNumberValidation()
@@ -129,18 +131,18 @@ void testClassroomOperations()
 	//myClass.averageClassGPA();
 
 	// --- TEST 7: Predefined << operator
-	std::cout << s1 << std::endl;
-	std::cout << s2 << std::endl;
-	std::cout << s3 << std::endl;
-	std::cout << s4 << std::endl;
-	std::cout << s5 << std::endl;
+	//std::cout << s1 << std::endl;
+	//std::cout << s2 << std::endl;
+	//std::cout << s3 << std::endl;
+	//std::cout << s4 << std::endl;
+	//std::cout << s5 << std::endl;
 }
 
 int main()
 {
     //std::cout << "Hello World!\n";
 	
-	//testDates(); 
+	testDates(); 
 
 	//testFacultyNumberValidation();
 	
@@ -152,6 +154,6 @@ int main()
 
 	//-----------------------------------
 
-	testClassroomOperations();
+	//testClassroomOperations();
 
 }

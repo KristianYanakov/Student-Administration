@@ -141,6 +141,15 @@ int Date::getCurrentDay()
 
 }
 
+std::ostream& operator<<(std::ostream& out, const Date& date)
+{
+	out << "Date: " << date.getDay() 
+		<< "/" << date.getMonth() 
+		<< "/" << date.getYear();
+
+	return out;
+}
+
 Date::~Date()
 {
 	//std::cout << "Destructor called for Date: " << std::endl;

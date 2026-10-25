@@ -1,5 +1,5 @@
 #pragma once
-
+#include <ostream>
 // ​Date (Дата): съхранява ден (day), месец (month) и година (year). 
 // Валидира календарните дати с оглед на високосните години (делимост на 4, но не на 100, освен ако не се дели на 400), 
 static const int MIN_YEAR = 1900;
@@ -29,6 +29,8 @@ public:
 	static int getCurrentYear();
 	static int getCurrentMonth();
 	static int getCurrentDay();
+
+	friend std::ostream& operator<<(std::ostream& out, const Date& date);
 
 	~Date();
 };

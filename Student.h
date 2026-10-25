@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <ostream>
+
 #include "Date.h"
 
 // Student (Студент): съхранява име (name), факултетен номер (fak_number), среден успех (gpa) и дата на раждане (birth_date – обект от клас Date чрез композиция). 
@@ -33,6 +35,8 @@ public:
 	bool operator<(const Student& other_student) const;
 
 	void printStudent() const;
+
+	friend std::ostream& operator<<(std::ostream& out, const Student& student);
 
 	~Student();
 };

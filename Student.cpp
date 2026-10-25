@@ -137,6 +137,18 @@ void Student::printStudent() const
 
 }
 
+std::ostream& operator<<(std::ostream& out, const Student& student)
+{
+	out << "Student: " << student.getName() << " "
+		<< student.getFacultyNumber() << " "
+		<< student.getAverageGPA() << " "
+		<< student.getBirthDate().getDay() << "/"
+		<< student.getBirthDate().getMonth() << "/"
+		<< student.getBirthDate().getYear();
+
+	return out;
+}
+
 Student::~Student()
 {
 	//std::cout << "Destructor called for Student: " << std::endl;

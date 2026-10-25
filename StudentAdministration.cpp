@@ -127,6 +127,13 @@ void testClassroomOperations()
 	// --- TEST 6: AVG GPA ---
 	//std::cout << "\n--- Testing AVG GPA ---\n";
 	//myClass.averageClassGPA();
+
+	// --- TEST 7: Predefined << operator
+	std::cout << s1 << std::endl;
+	std::cout << s2 << std::endl;
+	std::cout << s3 << std::endl;
+	std::cout << s4 << std::endl;
+	std::cout << s5 << std::endl;
 }
 
 int main()

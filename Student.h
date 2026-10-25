@@ -38,7 +38,7 @@ public:
 	void printStudent() const;
 
 	friend std::ostream& operator<<(std::ostream& out, const Student& student);
-	friend std::ostream& operator<<(std::ostream& out, const std::vector<Student>& students);
+	//friend std::ostream& operator<<(std::ostream& out, const std::vector<Student>& students);
 
 	~Student();
 };

@@ -213,8 +213,12 @@ void Classroom::printClassStudents()
 
 std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
 {
-	out << classroom.getClassName() << "\n"
-		<< classroom.getStudents();
+	out << classroom.getClassName() << "\n";
+
+	for (const auto& s : classroom.getStudents())
+	{
+		out << s << "\n";
+	}
 
 	return out;
 }

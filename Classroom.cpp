@@ -228,8 +228,7 @@ void Classroom::saveData(const std::string& file_path)
 {
 	//file_path validation ends with .csv
 
-	std::vector<Student> students_in_class = this->getStudents();
-	int classroom_size = students_in_class.size();
+	const std::vector<Student>& students_in_class = this->getStudents();
 
 	std::fstream data_file;
 	data_file.open(file_path, std::ios::out);
@@ -238,14 +237,14 @@ void Classroom::saveData(const std::string& file_path)
 	{
 		data_file << this->getClassName() << std::endl;
 
-		for (int i = 0; i < classroom_size; i++) {
+		for (const Student& s : students_in_class) {
 			data_file
-				<< students_in_class[i].getName() << ","
-				<< students_in_class[i].getFacultyNumber() << ","
-				<< students_in_class[i].getAverageGPA() << ","
-				<< students_in_class[i].getBirthDate().getDay() << ","
-				<< students_in_class[i].getBirthDate().getMonth() << ","
-				<< students_in_class[i].getBirthDate().getYear()
+				<< s.getName() << ","
+				<< s.getFacultyNumber() << ","
+				<< s.getAverageGPA() << ","
+				<< s.getBirthDate().getDay() << ","
+				<< s.getBirthDate().getMonth() << ","
+				<< s.getBirthDate().getYear()
 				<< std::endl;
 		}
 	}
@@ -265,8 +264,12 @@ void Classroom::loadData(const std::string& file_path)
 	{
 		std::string current_line;
 
+		this->students.clear();
+
 		while (std::getline(data_file, current_line))
-		{
+		{	
+			if (current_line.empty()) continue;
+
 			if (counter == 0)
 			{
 				this->setClassName(current_line);

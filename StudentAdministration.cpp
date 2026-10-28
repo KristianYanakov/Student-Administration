@@ -188,7 +188,7 @@ int main()
 
 	//-----------------------------------
 		
-	//testClassroomSaveData();
+	testClassroomSaveData();
 	
-	//testClassroomLoadData();
+	testClassroomLoadData();
 }

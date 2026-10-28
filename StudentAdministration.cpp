@@ -170,49 +170,6 @@ void testClassroomLoadData()
 	myClass.printClassStudents();
 }
 
-void testFileSavingLoading()
-{
-	std::string fruits[] = { "Apple", "Banana", "Cherry", "Strawberry", "Grapes" };
-	int quantity[] = { 1, 2, 3, 4, 5 };
-	const int fruit_count = fruits->size();
-
-	std::fstream my_file;
-	my_file.open("test_save/fruits_data.csv", std::ios::out);
-
-	if (my_file.is_open())
-	{
-		for (int i = 0;i < fruit_count; i++)
-		{
-			my_file << fruits[i] << "," << quantity[i] << std::endl;
-		}
-	}
-
-	my_file.close();
-
-	std::fstream read_file;
-	read_file.open("test_save/fruits_data.csv", std::ios::in);
-
-	if (read_file.is_open())
-	{
-		std::string line;
-
-		while (std::getline(read_file, line))
-		{
-			//std::cout << line << std::endl;
-
-			std::stringstream ss(line); //parse andd format a string
-			std::string fruit;
-			std::getline(ss, fruit, ',');
-			std::cout << fruit << " " << std::endl;
-
-			std::string quant;
-			std::getline(ss, quant, ',');
-			std::cout << quant << std::endl;
-		}
-	}
-
-	read_file.close();
-}
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -230,9 +187,8 @@ int main()
 	//testClassroomOperations();
 
 	//-----------------------------------
-	
-	//testFileSavingLoading();
-	
+		
 	//testClassroomSaveData();
-	testClassroomLoadData();
+	
+	//testClassroomLoadData();
 }

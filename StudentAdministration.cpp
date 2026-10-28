@@ -144,6 +144,32 @@ void testClassroomOperations()
 	std::cout << myClass;
 }
 
+void testClassroomSaveData()
+{
+	Classroom myClass("Class_A_2024");
+
+	Student s1("Alice Johnson", "111111111", 5.80, Date(15, 5, 2005));
+	Student s2("Bob Smith", "222222222", 4.50, Date(20, 8, 2004)); 
+	Student s3("Charlie Brown", "333333333", 3.20, Date(10, 1, 2005)); 
+	Student s4("Diana Prince", "444444444", 6.00, Date(30, 12, 2006)); 
+	Student s5("Evan Wright", "555555555", 4.50, Date(5, 5, 2005)); 
+
+	myClass.addStudent(s1);
+	myClass.addStudent(s2);
+	myClass.addStudent(s3);
+	myClass.addStudent(s4);
+	myClass.addStudent(s5);
+
+	myClass.saveData("saved_data/data.csv");
+}
+
+void testClassroomLoadData()
+{
+	Classroom myClass;
+	myClass.loadData("saved_data/data.csv");
+	myClass.printClassStudents();
+}
+
 void testFileSavingLoading()
 {
 	std::string fruits[] = { "Apple", "Banana", "Cherry", "Strawberry", "Grapes" };
@@ -207,5 +233,6 @@ int main()
 	
 	//testFileSavingLoading();
 	
-
+	//testClassroomSaveData();
+	testClassroomLoadData();
 }

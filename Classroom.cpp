@@ -6,7 +6,8 @@
 #include <optional>
 #include <ranges>
 #include <map>
-
+#include <fstream>
+#include <sstream>
 #include "Classroom.h"
 
 Classroom::Classroom()
@@ -225,12 +226,76 @@ std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
 
 void Classroom::saveData(const std::string& file_path)
 {
+	//file_path validation ends with .csv
 
+	std::vector<Student> students_in_class = this->getStudents();
+	int classroom_size = students_in_class.size();
+
+	std::fstream data_file;
+	data_file.open(file_path, std::ios::out);
+
+	if (data_file.is_open())
+	{
+		data_file << this->getClassName() << std::endl;
+
+		for (int i = 0; i < classroom_size; i++) {
+			data_file
+				<< students_in_class[i].getName() << ","
+				<< students_in_class[i].getFacultyNumber() << ","
+				<< students_in_class[i].getAverageGPA() << ","
+				<< students_in_class[i].getBirthDate().getDay() << ","
+				<< students_in_class[i].getBirthDate().getMonth() << ","
+				<< students_in_class[i].getBirthDate().getYear()
+				<< std::endl;
+		}
+	}
+
+	data_file.close();
 }
 
 void Classroom::loadData(const std::string& file_path)
 {
+	//file_path validation ends with .csv
+	int counter = 0;
 
+	std::fstream data_file;
+	data_file.open(file_path, std::ios::in);
+
+	if (data_file.is_open())
+	{
+		std::string current_line;
+
+		while (std::getline(data_file, current_line))
+		{
+			if (counter == 0)
+			{
+				this->setClassName(current_line);
+				counter++;
+
+				continue;
+			}
+			
+			std::stringstream ss(current_line);
+			
+			std::string curr_student_name;
+			std::string curr_faculty_number;
+			std::string curr_gpa;
+			std::string curr_birthday_day;
+			std::string curr_birthday_month;
+			std::string curr_birthday_year;
+
+			std::getline(ss, curr_student_name, ',');
+			std::getline(ss, curr_faculty_number, ',');
+			std::getline(ss, curr_gpa, ',');
+			std::getline(ss, curr_birthday_day, ',');
+			std::getline(ss, curr_birthday_month, ',');
+			std::getline(ss, curr_birthday_year, ',');			
+
+			this->addStudent(Student(curr_student_name, curr_faculty_number, std::stof(curr_gpa), Date(std::stoi(curr_birthday_day), std::stoi(curr_birthday_month), std::stoi(curr_birthday_year))));
+		}
+	}
+
+	data_file.close();
 }
 
 Classroom::~Classroom() {

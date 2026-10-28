@@ -223,6 +223,16 @@ std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
 	return out;
 }
 
+void Classroom::saveData(const std::string& file_path)
+{
+
+}
+
+void Classroom::loadData(const std::string& file_path)
+{
+
+}
+
 Classroom::~Classroom() {
 	//std::cout << "Destructor called for Classroom: " << std::endl;
 }

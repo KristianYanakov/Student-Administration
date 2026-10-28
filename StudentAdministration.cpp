@@ -1,6 +1,9 @@
 // StudentAdministration.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "Date.h"
 #include "Student.h"
 #include "Classroom.h"
@@ -82,7 +85,7 @@ void testClassroomOperations()
 	Student s4("Diana Prince", "444444444", 6.00, Date(30, 12, 2006)); // ~Age 19
 	Student s5("Evan Wright", "555555555", 4.50, Date(5, 5, 2005)); // ~Age 21
 
-	//Student s6("Test", "000000000", 4.50, Date(5, 5, 2002)); // ~Age 24
+	Student s6("Test", "000000000", 4.50, Date(5, 5, 2002)); // ~Age 24
 
 	myClass.addStudent(s1);
 	myClass.addStudent(s2);
@@ -90,57 +93,100 @@ void testClassroomOperations()
 	myClass.addStudent(s4);
 	myClass.addStudent(s5);
 
-	//myClass.printClassStudents();
+	myClass.printClassStudents();
 
-	//myClass.addStudent(s6);
+	myClass.addStudent(s6);
 
 	// --- TEST 1: Search ---
-	 //std::cout << "--- Testing Search ---\n";
-	 //myClass.searchByFacultyNumber("333333333"); // Should print Charlie Brown 
+	 std::cout << "--- Testing Search ---\n";
+	 myClass.searchByFacultyNumber("333333333"); // Should print Charlie Brown 
 
 	// --- TEST 2: Sort ---
-	 //std::cout << "\n--- Testing Sort ---\n";
-	 //myClass.sortStudents(); // Should print Charlie(3.20) -> Bob(4.50) -> Evan(4.50) -> Alice(5.80) -> Diana(6.00)
+	 std::cout << "\n--- Testing Sort ---\n";
+	 myClass.sortStudents(); // Should print Charlie(3.20) -> Bob(4.50) -> Evan(4.50) -> Alice(5.80) -> Diana(6.00)
 
 	// --- TEST 3: Filter ---
-	 //std::cout << "\n--- Testing Filter (> 5.0) ---\n";
-	 //myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
+	 std::cout << "\n--- Testing Filter (> 5.0) ---\n";
+	 myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
 
-	// std::cout << "\n--- Testing Filter Range (4.0 - 5.0) ---\n";
-	 //myClass.filterStudentsByGPA(4.0, 5.0); // Should print Bob and Evan
+	 std::cout << "\n--- Testing Filter Range (4.0 - 5.0) ---\n";
+	 myClass.filterStudentsByGPA(4.0, 5.0); // Should print Bob and Evan
 
 	// --- TEST 4: Age Distribution ---
-	// std::cout << "\n--- Testing Age Distribution ---\n";
-	 //myClass.printStudentAgeDistribution(); 
-	 //myClass.printStudentAgeDistribution(Date(5, 9, 2020)); 
+	 std::cout << "\n--- Testing Age Distribution ---\n";
+	 myClass.printStudentAgeDistribution(); 
+	 myClass.printStudentAgeDistribution(Date(5, 9, 2020)); 
 
 	// Expected output depending on current date: Three 21-year-olds, one 22-year-old, one 19/20-year-old.
 
 	// --- TEST 5: Remove ---
-	 //std::cout << "\n--- Testing Remove ---\n";
-	 //myClass.removeStudent("22222222"); // Should remove Bob
-	 //myClass.searchByFacultyNumber("222222222");
-	 //myClass.printClassStudents();
+	 std::cout << "\n--- Testing Remove ---\n";
+	 myClass.removeStudent("22222222"); // Should remove Bob
+	 myClass.searchByFacultyNumber("222222222");
+	 myClass.printClassStudents();
 
-	 //myClass.removeStudent("123456789"); // No such fac num
-	 //myClass.searchByFacultyNumber("123456789");
-	 //myClass.printClassStudents();
+	 myClass.removeStudent("123456789"); // No such fac num
+	 myClass.searchByFacultyNumber("123456789");
+	 myClass.printClassStudents();
 
 	// --- TEST 6: AVG GPA ---
-	//std::cout << "\n--- Testing AVG GPA ---\n";
-	//myClass.averageClassGPA();
+	std::cout << "\n--- Testing AVG GPA ---\n";
+	myClass.averageClassGPA();
 
 	// --- TEST 7: Predefined << operator
-	//std::cout << s1 << std::endl;
-	//std::cout << s2 << std::endl;
-	//std::cout << s3 << std::endl;
-	//std::cout << s4 << std::endl;
-	//std::cout << s5 << std::endl;
+	std::cout << s1 << std::endl;
+	std::cout << s2 << std::endl;
+	std::cout << s3 << std::endl;
+	std::cout << s4 << std::endl;
+	std::cout << s5 << std::endl;
 
 	// --- TEST 8: Predefine << for classroom
 	std::cout << myClass;
 }
 
+void testFileSavingLoading()
+{
+	std::string fruits[] = { "Apple", "Banana", "Cherry", "Strawberry", "Grapes" };
+	int quantity[] = { 1, 2, 3, 4, 5 };
+	const int fruit_count = fruits->size();
+
+	std::fstream my_file;
+	my_file.open("test_save/fruits_data.csv", std::ios::out);
+
+	if (my_file.is_open())
+	{
+		for (int i = 0;i < fruit_count; i++)
+		{
+			my_file << fruits[i] << "," << quantity[i] << std::endl;
+		}
+	}
+
+	my_file.close();
+
+	std::fstream read_file;
+	read_file.open("test_save/fruits_data.csv", std::ios::in);
+
+	if (read_file.is_open())
+	{
+		std::string line;
+
+		while (std::getline(read_file, line))
+		{
+			//std::cout << line << std::endl;
+
+			std::stringstream ss(line); //parse andd format a string
+			std::string fruit;
+			std::getline(ss, fruit, ',');
+			std::cout << fruit << " " << std::endl;
+
+			std::string quant;
+			std::getline(ss, quant, ',');
+			std::cout << quant << std::endl;
+		}
+	}
+
+	read_file.close();
+}
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -155,8 +201,11 @@ int main()
 
 	//testPredefinedStudentComparisonOperator();
 
-	//-----------------------------------
+	//testClassroomOperations();
 
-	testClassroomOperations();
+	//-----------------------------------
+	
+	//testFileSavingLoading();
+	
 
 }

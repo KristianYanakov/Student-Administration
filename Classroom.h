@@ -38,6 +38,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& out, const Classroom& classroom);
 
+	static bool isFileExtensionValid(const std::string& file_path);
 	void saveData(const std::string& file_path);
 	void loadData(const std::string& file_path);
 

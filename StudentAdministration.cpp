@@ -170,6 +170,11 @@ void testClassroomLoadData()
 	myClass.printClassStudents();
 }
 
+void testFileExtension()
+{
+	std::cout << Classroom::isFileExtensionValid("saved_data/data.csv") << std::endl;
+	std::cout << Classroom::isFileExtensionValid("saved_data/data.cvs") << std::endl;
+}
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -188,7 +193,9 @@ int main()
 
 	//-----------------------------------
 		
-	testClassroomSaveData();
+	//testClassroomSaveData();
 	
-	testClassroomLoadData();
+	//testClassroomLoadData();
+
+	//testFileExtension();
 }

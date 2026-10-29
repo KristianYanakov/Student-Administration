@@ -224,9 +224,24 @@ std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
 	return out;
 }
 
+bool Classroom::isFileExtensionValid(const std::string& file_path)
+{
+	std::string suffix = "";
+	for (int i = file_path.size() - 4; i < file_path.size(); i++) {
+		suffix += file_path[i];
+		//std::cout << suffix << std::endl;
+	}
+
+	return !suffix.compare(".csv");
+}
+
 void Classroom::saveData(const std::string& file_path)
 {
-	//file_path validation ends with .csv
+	if (!isFileExtensionValid(file_path))
+	{
+		std::cerr << "File path is pointing to a non .csv file! Type not supported!";
+		return;
+	}
 
 	const std::vector<Student>& students_in_class = this->getStudents();
 
@@ -254,7 +269,12 @@ void Classroom::saveData(const std::string& file_path)
 
 void Classroom::loadData(const std::string& file_path)
 {
-	//file_path validation ends with .csv
+	if (!isFileExtensionValid(file_path))
+	{
+		std::cerr << "File path is pointing to a non .csv file! Type not supported!";
+		return;
+	}
+
 	int counter = 0;
 
 	std::fstream data_file;

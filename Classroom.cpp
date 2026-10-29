@@ -233,13 +233,11 @@ std::ostream& operator<<(std::ostream& out, const Classroom& classroom)
 
 bool Classroom::isFileExtensionValid(const std::string& file_path)
 {
-	std::string suffix = "";
-	for (int i = file_path.size() - 4; i < file_path.size(); i++) {
-		suffix += file_path[i];
-		//std::cout << suffix << std::endl;
-	}
+	if (file_path.size() < 4) return false;
 
-	return !suffix.compare(".csv");
+	std::string suffix = file_path.substr(file_path.size() - 4);
+
+	return suffix == ".csv";
 }
 
 void Classroom::saveData(const std::string& file_path) const

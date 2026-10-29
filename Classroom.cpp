@@ -28,7 +28,7 @@ Classroom::Classroom(std::string class_name, std::vector<Student> students)
 
 // Getters
 
-const std::string Classroom::getClassName() const
+const std::string& Classroom::getClassName() const
 {
 	return this->class_name;
 }
@@ -40,7 +40,7 @@ const std::vector<Student>& Classroom::getStudents() const
 
 // Setters & Add & Remove
 
-void Classroom::setClassName(std::string class_name)
+void Classroom::setClassName(const std::string& class_name)
 {
 	if (this->isClassNameValid(class_name)) {
 		this->class_name = class_name;
@@ -54,7 +54,7 @@ void Classroom::addStudent(const Student& student)
 	this->students.push_back(student);
 }
 
-void Classroom::removeStudent(std::string fac_num)
+void Classroom::removeStudent(const std::string& fac_num)
 {
 	int remove_index = this->searchByFacultyNumber(fac_num);
 	
@@ -69,8 +69,12 @@ void Classroom::removeStudent(std::string fac_num)
 
 // Search & Sort & Filter & Print Age Distribution & Validation
 
-int Classroom::searchByFacultyNumber(std::string fac_num)
+int Classroom::searchByFacultyNumber(const std::string& fac_num) const
 {
+	if (!Student::isFacultyNumberValid(fac_num)) {
+		std::cerr << "INVALID Facnum: " << fac_num << std::endl;
+		return -1;
+	}
 	int index = 0;
 
 	for (const Student& st : this->students)
@@ -100,7 +104,7 @@ void Classroom::sortStudents()
 	}
 }
 
-void Classroom::filterStudentsByGPA(float gpa_min)
+std::vector<Student>& Classroom::filterStudentsByGPA(float gpa_min)
 {
 	std::vector<Student> filtered;
 
@@ -117,9 +121,11 @@ void Classroom::filterStudentsByGPA(float gpa_min)
 	{
 		std::cerr << "No students match the filter!" << std::endl;
 	}
+
+	return filtered;
 }
 
-void Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
+std::vector<Student>& Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
 {
 	std::vector<Student> filtered;
 
@@ -136,10 +142,11 @@ void Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
 	{
 		std::cerr << "No students match the filter!" << std::endl;
 	}
+	return filtered;
 }
 
 //Default with the current date
-void Classroom::printStudentAgeDistribution()
+void Classroom::printStudentAgeDistribution() const
 {
 	std::map<int, int> age_distribution;
 	int curr_student_age = 0;
@@ -157,7 +164,7 @@ void Classroom::printStudentAgeDistribution()
 }
 
 //With custom date
-void Classroom::printStudentAgeDistribution(Date date)
+void Classroom::printStudentAgeDistribution(const Date& date) const
 {
 	std::map<int, int> age_distribution;
 	int curr_student_age = 0;
@@ -194,14 +201,14 @@ float Classroom::averageClassGPA()
 	return avg_grade;
 }
 
-bool Classroom::isClassNameValid(std::string class_name)
+bool Classroom::isClassNameValid(const std::string& class_name)
 {
 	std::regex regex_expression("^Class_[A-Z]_20[0-9]{2}$"); // Class_B_2019
 
 	return regex_match(class_name, regex_expression);
 }
 
-void Classroom::printClassStudents()
+void Classroom::printClassStudents() const
 {
 	std::cout << "------------------------------------------" << std::endl;
 	std::cout << "Students of Class - " << this->class_name << "\n"  << std::endl;
@@ -235,7 +242,7 @@ bool Classroom::isFileExtensionValid(const std::string& file_path)
 	return !suffix.compare(".csv");
 }
 
-void Classroom::saveData(const std::string& file_path)
+void Classroom::saveData(const std::string& file_path) const
 {
 	if (!isFileExtensionValid(file_path))
 	{

@@ -1,5 +1,3 @@
-// StudentAdministration.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -113,15 +111,17 @@ void testClassroomOperations()
 	 myClass.filterStudentsByGPA(4.0, 5.0); // Should print Bob and Evan
 
 	// --- TEST 4: Age Distribution ---
-	 std::cout << "\n--- Testing Age Distribution ---\n";
+	 std::cout << "\n--- Testing Age Distribution Default ---\n";
 	 myClass.printStudentAgeDistribution(); 
+	 std::cout << "\n--- Testing Age Distribution Given Date 5/9/2020---\n";
 	 myClass.printStudentAgeDistribution(Date(5, 9, 2020)); 
 
 	// Expected output depending on current date: Three 21-year-olds, one 22-year-old, one 19/20-year-old.
 
 	// --- TEST 5: Remove ---
 	 std::cout << "\n--- Testing Remove ---\n";
-	 myClass.removeStudent("22222222"); // Should remove Bob
+	 myClass.removeStudent("222222222"); // Should remove Bob
+	 myClass.removeStudent("12314515"); // invalid fac num test
 	 myClass.searchByFacultyNumber("222222222");
 	 myClass.printClassStudents();
 
@@ -190,8 +190,6 @@ int main()
 	//testPredefinedStudentComparisonOperator();
 
 	//testClassroomOperations();
-
-	//-----------------------------------
 		
 	//testClassroomSaveData();
 	

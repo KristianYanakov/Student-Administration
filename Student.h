@@ -5,9 +5,6 @@
 
 #include "Date.h"
 
-// Student (Студент): съхранява име (name), факултетен номер (fak_number), среден успех (gpa) и дата на раждане (birth_date – обект от клас Date чрез композиция). 
-// Съдържа методи за пресмятане на възраст (getAge), статичен метод за валидация на факултетния номер (isValidFacultyNumber) и предефиниран оператор < за сортиране, 
-
 class Student {
 private:
 	std::string name;
@@ -24,14 +21,14 @@ public:
 	float getAverageGPA() const;
 	Date getBirthDate() const;
 
-	void setName(std::string name);
-	void setFacultyNumber(std::string fac_num);
+	void setName(const std::string& name);
+	void setFacultyNumber(const std::string& fac_num);
 	void setAvgGPA(float avg_gpa);
-	void setBirthDate(Date birthday);
+	void setBirthDate(const Date& birthday);
 	
 	int getAge() const;
-	int getAge(Date date) const;
-	static bool isFacultyNumberValid(std::string fac_num);
+	int getAge(const Date& date) const;
+	static bool isFacultyNumberValid(const std::string& fac_num);
 
 	bool operator<(const Student& other_student) const;
 

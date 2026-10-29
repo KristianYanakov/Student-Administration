@@ -44,12 +44,12 @@ Date Student::getBirthDate() const
 
 //Setters
 
-void Student::setName(std::string name)
+void Student::setName(const std::string& name)
 {
 	this->name = name;
 }
 
-void Student::setFacultyNumber(std::string fac_num)
+void Student::setFacultyNumber(const std::string& fac_num)
 {
 	if (isFacultyNumberValid(fac_num))
 	{
@@ -69,7 +69,7 @@ void Student::setAvgGPA(float avg_gpa)
 	this->average_gpa = avg_gpa;
 }
 
-void Student::setBirthDate(Date birthday)
+void Student::setBirthDate(const Date& birthday)
 {
 	this->birth_date = birthday;
 }
@@ -98,7 +98,7 @@ int Student::getAge() const
 }
 
 //With custom date
-int Student::getAge(Date date) const
+int Student::getAge(const Date& date) const
 {
 	int curr_year = date.getYear();
 	int curr_month = date.getMonth();
@@ -118,7 +118,7 @@ int Student::getAge(Date date) const
 	return age;
 }
 
-bool Student::isFacultyNumberValid(std::string fac_num)
+bool Student::isFacultyNumberValid(const std::string& fac_num)
 {
 	std::regex regex_expression("[0-9]{9}");
 

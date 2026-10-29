@@ -22,18 +22,18 @@ void testDates()
 	std::cout << date1 << std::endl;
 }
 
-void testFacultyNumberValidation()
-{
-	std::cout << Student::isFacultyNumberValid("0000a0000") << std::endl;
-	std::cout << Student::isFacultyNumberValid("00000000") << std::endl;
-	std::cout << Student::isFacultyNumberValid("000000000") << std::endl;
-}
-
 void testCurrentDate()
 {
 	std::cout << "Current Year: " << Date::getCurrentYear() << std::endl;
 	std::cout << "Current Month: " << Date::getCurrentMonth() << std::endl;
 	std::cout << "Current Day: " << Date::getCurrentDay() << std::endl;
+}
+
+void testFacultyNumberValidation()
+{
+	std::cout << Student::isFacultyNumberValid("0000a0000") << std::endl;
+	std::cout << Student::isFacultyNumberValid("00000000") << std::endl;
+	std::cout << Student::isFacultyNumberValid("000000000") << std::endl;
 }
 
 void testGetAge()
@@ -54,7 +54,7 @@ void testGetAge()
 	stud1.setBirthDate(Date(23, 10, 2005)); // date has passed - 21
 	std::cout << stud1.getAge() << std::endl;
 
-	stud1.setBirthDate(Date(25, 10, 2005)); // date has passed - 20
+	stud1.setBirthDate(Date(30, 10, 2005)); // date has not passed - 20
 	std::cout << stud1.getAge() << std::endl;
 }
 
@@ -181,14 +181,18 @@ int main()
 	
 	//testDates(); 
 
-	//testFacultyNumberValidation();
-	
 	//testCurrentDate();
+
+	//--------------------------
+
+	//testFacultyNumberValidation();
 
 	//testGetAge();
 
 	//testPredefinedStudentComparisonOperator();
 
+	//--------------------------
+	
 	//testClassroomOperations();
 		
 	//testClassroomSaveData();

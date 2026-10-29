@@ -11,13 +11,13 @@ void testDates()
 	Date date1(5, 1, 2026);
 
 	//Test Cases For Date
-	//date1.setDate(29, 2, 2024); //Valid Leap Year
-	//date1.setDate(29, 2, 2026); //Invalid Date
-	//date1.setDate(29, 2, 1900); //Invalid
-	//date1.setDate(29, 2, 2000); //Valid
-	//date1.setDate(31, 4, 2026); //Invalid
-	//date1.setDate(31, 4, 2028); //Invalid
-	//date1.setDate(31, 4, 1800); //Invalid
+	date1.setDate(29, 2, 2024); //Valid Leap Year
+	date1.setDate(29, 2, 2026); //Invalid Date
+	date1.setDate(29, 2, 1900); //Invalid
+	date1.setDate(29, 2, 2000); //Valid
+	date1.setDate(31, 4, 2026); //Invalid
+	date1.setDate(31, 4, 2028); //Invalid
+	date1.setDate(31, 4, 1800); //Invalid
 
 	std::cout << date1 << std::endl;
 }

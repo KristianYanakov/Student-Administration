@@ -104,7 +104,7 @@ void Classroom::sortStudents()
 	}
 }
 
-std::vector<Student>& Classroom::filterStudentsByGPA(float gpa_min)
+std::vector<Student> Classroom::filterStudentsByGPA(float gpa_min) const
 {
 	std::vector<Student> filtered;
 
@@ -125,7 +125,7 @@ std::vector<Student>& Classroom::filterStudentsByGPA(float gpa_min)
 	return filtered;
 }
 
-std::vector<Student>& Classroom::filterStudentsByGPA(float gpa_min, float gpa_max)
+std::vector<Student> Classroom::filterStudentsByGPA(float gpa_min, float gpa_max) const
 {
 	std::vector<Student> filtered;
 
@@ -181,7 +181,7 @@ void Classroom::printStudentAgeDistribution(const Date& date) const
 	}
 }
 
-float Classroom::averageClassGPA()
+float Classroom::averageClassGPA() const
 {
 	float avg_grade = 0;
 

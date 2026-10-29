@@ -25,11 +25,11 @@ public:
 
 	int searchByFacultyNumber(const std::string& fac_num) const;
 	void sortStudents();
-	std::vector<Student>& filterStudentsByGPA(float gpa_min);
-	std::vector<Student>& filterStudentsByGPA(float gpa_min, float gpa_max);
+	std::vector<Student> filterStudentsByGPA(float gpa_min) const;
+	std::vector<Student> filterStudentsByGPA(float gpa_min, float gpa_max) const;
 	void printStudentAgeDistribution() const;
 	void printStudentAgeDistribution(const Date& date) const;
-	float averageClassGPA();
+	float averageClassGPA() const;
 
 	static bool isClassNameValid(const std::string& class_name);
 	static void printStudentInfo(const Student& student);

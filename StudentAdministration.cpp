@@ -105,7 +105,9 @@ void testClassroomOperations()
 
 	// --- TEST 3: Filter ---
 	 std::cout << "\n--- Testing Filter (> 5.0) ---\n";
-	 myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
+	 //myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
+	 std::vector<Student> filteredStudents = myClass.filterStudentsByGPA(5.0); // Should print Alice and Diana
+	 std::cout << filteredStudents.size();
 
 	 std::cout << "\n--- Testing Filter Range (4.0 - 5.0) ---\n";
 	 myClass.filterStudentsByGPA(4.0, 5.0); // Should print Bob and Evan

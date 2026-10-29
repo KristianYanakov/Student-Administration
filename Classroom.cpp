@@ -269,9 +269,8 @@ void Classroom::saveData(const std::string& file_path) const
 				<< s.getBirthDate().getYear()
 				<< std::endl;
 		}
+		data_file.close();
 	}
-
-	data_file.close();
 }
 
 void Classroom::loadData(const std::string& file_path)
@@ -323,9 +322,8 @@ void Classroom::loadData(const std::string& file_path)
 
 			this->addStudent(Student(curr_student_name, curr_faculty_number, std::stof(curr_gpa), Date(std::stoi(curr_birthday_day), std::stoi(curr_birthday_month), std::stoi(curr_birthday_year))));
 		}
+		data_file.close();
 	}
-
-	data_file.close();
 }
 
 Classroom::~Classroom() {

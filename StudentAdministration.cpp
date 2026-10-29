@@ -195,9 +195,9 @@ int main()
 	
 	//testClassroomOperations();
 		
-	//testClassroomSaveData();
+	testClassroomSaveData();
 	
-	//testClassroomLoadData();
+	testClassroomLoadData();
 
 	//testFileExtension();
 }
